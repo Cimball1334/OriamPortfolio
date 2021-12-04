@@ -1,5 +1,5 @@
 import numpy as np
-#test comment for github
+#test comment for git
 
 class NeuralNetwork:
 
