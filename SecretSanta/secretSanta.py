@@ -47,16 +47,16 @@ import random
     Functions
 """""""""""""""""""""""""""
 
-def write_to_json(write):
+def write_to_json(write,file):
     
     """Dump argument to json file for encoding
     
-    The write_to_json file takes in a single argument and dumps the parameter to a specified json file.
+    The write_to_json file takes in a 2 arguments and dumps the parameter write to a specified json file.
     
-    TODO: remove hardcoded names and replace with variables names
 
     Args:
         write (Any): write is the variable that will be dumbed to the json file
+        file (string): path to file
         
 
     Returns:
@@ -64,45 +64,42 @@ def write_to_json(write):
         
         
     """
-    with open('secret_santa.json','w') as file_write:
+    with open(file,'w') as file_write:
         json.dump(write, file_write)
         
-def read_from_json():
+def read_from_json(file):
     
-    """Summary line.
+    """Read data from a json for decoding
 
-    Extended description of function.
+    The read_from_json file takes in a single parameter of a file location and decodes the data
 
     Args:
-        arg1 (int): Description of arg1
-        arg2 (str): Description of arg2
+        file (string):  path to json file 
 
     Returns:
-        bool: Description of return value
+        object: returns decoded json data
 
     """
-    with open('secret_santa.json') as file_read:
+    with open(file) as file_read:
         return json.load(file_read)
         
 def print_current(dictionary):
     
-    """Summary line.
+    """Print the current Seccret Santa Assignments to the console
 
-    Extended description of function.
+    print_current prints out the key, and final value for each elemetn of dictionary
 
     Args:
-        arg1 (int): Description of arg1
-        arg2 (str): Description of arg2
+        dictionary (Dict): a dictionary containing array as the values
 
     Returns:
-        bool: Description of return value
+        None: prints to console
 
     """
     for key in dictionary:
         print('{:<8} -->  {}'.format(key, dictionary[key][-1]))
         
 def assign_names(dictionary, buffer):
-    
     #rules: cannot be most recent, must not be spouse
     
     names = list(dictionary.keys())
@@ -112,11 +109,8 @@ def assign_names(dictionary, buffer):
     print(names_random)
     
     #implement rules
+
     
-    for i in range(len(names)):
-        for j in range(buffer):
-            if dictionary[names[i]][-1] == names_random[-buffer]:
-                assign_names(dictionary,buffer)
        
             
     #list has now been sorted according to rules
@@ -128,8 +122,9 @@ def assign_names(dictionary, buffer):
     Variables
 """""""""""""""""""""""""""
 
+file_name = 'secret_santa.json'
 
-grant_names = read_from_json()
+grant_names = read_from_json(file_name)
 
 
 """""""""""""""""""""""""""
@@ -138,7 +133,7 @@ grant_names = read_from_json()
 
 assign_names(grant_names,2)
 
-write_to_json(grant_names)
+write_to_json(grant_names,file_name)
 
 print_current(grant_names)
 
