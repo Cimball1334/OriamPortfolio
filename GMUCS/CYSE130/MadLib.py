@@ -1,0 +1,10 @@
+n1 = input()
+n2 = input()
+n3 = input()
+v1 = input()
+v2 = input()
+body_part = input()
+a1 = input()
+a2 = input()
+
+print('Today, every student has a computer small enough to fit into his {}. S/he can solve any math problem by simply pushing the computer\'s little {}. Computers can add, multiply, divide, and {}. They can also {} better than a human. Some computers are {}. Others have a/an {} screen that shows all kinds of {} and {} figures.'.format())
