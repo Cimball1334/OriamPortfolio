@@ -15,12 +15,12 @@ import random
 
 # grant_names = {'Granny': ['Jackie','Ali','Cameron','Trina','Megan','Kevin'],
 #                 'Grandpa': ['Katy','Lesley','Richard','Kevin','Scott','Ali'],
-#                 'Jackie': ['Kiki','Scott','Lesley','Cameron','Trina','Cameron'],
+#                 'Jackie': ['Kiki','Scott','Lesley','Cameron','Trina','Grandpa'],
 #                 'Kevin': ['Grandpa','Kiki','Scott','Megan','Cameron','Richard'],
 #                 'Ali': ['Trina','Kevin','Jackie','Scott','Katy','Lesley'],
 #                 'Kiki': ['Lesley','Granny','Trina','Katy','Richard','Stuart'],
 #                 'Scott': ['Kevin','Jackie','Granny','Lesli','Ali','Kiki'],
-#                 'Trina': ['Ali','Katy','Ali','Kiki','Chloe','Grandpa'],
+#                 'Trina': ['Ali','Katy','Ali','Kiki','Chloe','Cameron'],
 #                 'Lesley': ['Cameron','Trina','Grandpa','Chloe','Kevin','Granny'],
 #                 'Richard': ['Scott','Cameron','Kevin','Jackie','Granny','Trina'],
 #                 'Katy': ['Granny','Richard','Kiki','Ali','Grandpa','Megan'],
@@ -103,26 +103,25 @@ def assign_names(dictionary, buffer):
     #rules: cannot be most recent, must not be spouse
     
     names = list(dictionary.keys())
-    names_random = names[:]
-    
-    random.shuffle(names_random)
-    print(names_random)
-    
-    #implement rules
+    random.shuffle(names)
 
-    
-       
+
+    #function no worko anymore - tried to make it actually work and I broke it
+    for i in range(len(dictionary)):
+        print("{} gets {} by random. \nIs this ok (y/n)?".format(list(dictionary.keys())[i],names[i]))
+        ans = input()
+        if ans == "y":
+            print("OK")
+            dictionary[list(dictionary.keys()[i])].append(names[i])
+        else:
+            print("Swapping list")
             
-    #list has now been sorted according to rules
-    for i in range(len(names)):
-        dictionary[names[i]] = dictionary[names[i]]+[names_random[i]]
-        
 
 """""""""""""""""""""""""""
     Variables
 """""""""""""""""""""""""""
 
-file_name = 'secret_santa.json'
+file_name = 'SecretSanta\secret_santa.json'
 
 grant_names = read_from_json(file_name)
 
@@ -133,7 +132,17 @@ grant_names = read_from_json(file_name)
 
 assign_names(grant_names,2)
 
-write_to_json(grant_names,file_name)
+# write_to_json(grant_names,file_name)
 
-print_current(grant_names)
+# print_current(grant_names)
 
+
+# while(True):
+#     print("What would you like to do? \n(1) Assign Names\n(2) Save Current List\n(3) Print Current Assignments\n(4) Print Previous Assignments - NOT WORKING")
+#     inp = input()
+#     if(inp == "1"):
+#         assign_names(grant_names,2)
+#     elif(inp == "2"):
+#         write_to_json(grant_names,file_name)
+#     else:
+#         print_current(grant_names)
