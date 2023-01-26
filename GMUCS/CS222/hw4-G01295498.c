@@ -31,10 +31,13 @@ struct Address{
 };
 
 char *getDateAndTime();
+
 int Read_Data_File(struct Address list[]);
 void Bubble_sort(struct Address list[], int pos, int direction);
 void swap(struct Address *x,struct Address *y);
 void Generate_Alias_list(struct Address list[],char name[], int n);
+
+
 int toupper(int ch);
 int strcmp (const char* str1, const char* str2);
 
@@ -183,6 +186,6 @@ int Read_Data_File(struct Address list[]){
         }
 
     }
- return pos;
+    return pos;
 
 }
