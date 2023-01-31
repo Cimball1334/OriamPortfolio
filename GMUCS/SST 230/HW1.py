@@ -6,8 +6,9 @@ Systems 230 HW 1
 2. I/We have not taken help from any other individuals or resources on this assignment that was not permitted. 
 """
 
-#Problem 1 - Replace n outliers from an array
-
+"""
+Problem 1 - Replace n outliers from an array
+"""
 import string
 
 
@@ -24,22 +25,24 @@ def remove_outliers(outliers, list):
 
 
 #Input from User
-"""
-nu_list = []
-nu_entries = int(input('Enter the number of entries? '))
-for i in range(nu_entries):
-    nu_list.append(int(input()))
 
-nu_outliers = int(input('How many elements would you like to remove? '))
-"""
+# nu_list = []
+# nu_entries = int(input('Enter the number of entries? '))
+# for i in range(nu_entries):
+#    nu_list.append(int(input()))
+
+# nu_outliers = int(input('How many elements would you like to remove? '))
 
 #Function Call
-"""
-print(remove_outliers(2,nu_list))
-"""
+
+# print(remove_outliers(2,nu_list))
 
 
-#Problem 2 - Unique String Inputs
+
+"""
+Problem 2 - Unique String Inputs
+"""
+
 print('Enter each string, end with a new line to stop adding')
 #Getting User Input
 string_list = [x for x in iter (input, '')]
