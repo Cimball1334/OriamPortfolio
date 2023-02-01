@@ -30,7 +30,8 @@ for i in range(nu_entries):
 
 nu_outliers = int(input('How many outliers would you like to remove? '))
 
-#Function Call
+#Function Call returns a copy of the list, 
+#here I am printing it and not saving it
 
 print(remove_outliers(2,nu_list))
 
