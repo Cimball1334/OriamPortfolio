@@ -9,9 +9,6 @@ Systems 230 HW 1
 """
 Problem 1 - Replace n outliers from an array
 """
-import string
-
-
 def remove_outliers(outliers, list):
     #Length Error Handling
     if len(list) < 2*outliers:
@@ -26,16 +23,16 @@ def remove_outliers(outliers, list):
 
 #Input from User
 
-# nu_list = []
-# nu_entries = int(input('Enter the number of entries? '))
-# for i in range(nu_entries):
-#    nu_list.append(int(input()))
+nu_list = []
+nu_entries = int(input('Enter the number of list entries?'))
+for i in range(nu_entries):
+   nu_list.append(int(input()))
 
-# nu_outliers = int(input('How many elements would you like to remove? '))
+nu_outliers = int(input('How many outliers would you like to remove? '))
 
 #Function Call
 
-# print(remove_outliers(2,nu_list))
+print(remove_outliers(2,nu_list))
 
 
 
