@@ -5,7 +5,7 @@ import matplotlib.pyplot as plot
 layer_sizes = (784,5,10)
 net = nn.NeuralNetwork(layer_sizes)
 
-with np.load('F:\\Apps\\Programming\\VS Code\\Git Repositories\\Portfolio\\OriamPortfolio\\NumberPrediction\\mnist.npz') as data:
+with np.load('/home/kimba/Desktop/Repo/OriamPortfolio/NumberPrediction/mnist.npz') as data:
     training_images = data['training_images']
     training_labels = data['training_labels']
 
@@ -13,3 +13,7 @@ with np.load('F:\\Apps\\Programming\\VS Code\\Git Repositories\\Portfolio\\Oriam
 
 # print(prediction.shape)
 
+layer_sizes = (784,5,10)
+
+net = nn.NeuralNetwork(layer_sizes)
+prediction = net.predict(training_images)
