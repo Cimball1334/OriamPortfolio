@@ -5,6 +5,7 @@ class NeuralNetwork:
     def __init__(self, layer_sizes):
         #creates a tuple where a is the number of columns and b is the number of rows
         #this comes from creating a matrix of our connections between neurons
+        layer_sizes = layer_sizes
         weight_shapes = [(a,b) for a,b in zip(layer_sizes[1:],layer_sizes[:-1])]
         
         #weight shape is a matrix that contains:
@@ -23,6 +24,19 @@ class NeuralNetwork:
         # print(weight_shapes)
         # print(self.weights)
         # print(self.biases)
+
+    def save_weights(self):
+        np.save('ArrayData',self.weights)
+
+    def load_weights(self):
+        self.weights = np.load('ArrayData')
+
+    def new_rand_weights(self):
+        self.weights = [np.random.standard_normal(s)/s[1]**.5 for s in self.weight_shapes]
+
+    def new_rand_bias(self):
+        self.biases = [np.zeros((s,1)) for s in self.layer_sizes[1:]]
+
 
     def predict(self, a):
         #this loop represents each layer where w is a specific layers weight and b is the bias
