@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plot
 
 exam_data = {
     'name': ['First','Second','Third','Fourth','Fith','Sixth'],
