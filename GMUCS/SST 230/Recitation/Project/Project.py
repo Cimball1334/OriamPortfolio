@@ -1,33 +1,43 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-''' 
-https://catalog.data.gov/dataset/tax-administrations-real-estate-assessed-values-08c4b/resource/7454dd8f-8e29-4b38-b844-b4ec63f23cb1
+
+
+df = pd.read_csv('GMUCS/SST 230/Recitation/Project/Tax_Data.csv')
+df.info()
+tax_data = pd.DataFrame(df).to_numpy()
+
+'''
+Direct Comparison of buildings current and previous tax rate
 '''
 
-df = pd.read_csv('GMUCS/SST 230/Recitation/Project/Tax_Rates.csv')
+shown_elemenets = 10
+x_axis = np.arange(0,shown_elemenets,1)
+# print(x_axis)
+
+current = np.array([tax_data[x][3] for x in x_axis])
+previous = np.array([tax_data[x][7] for x in x_axis])
+
+# plt.bar(x=x_axis,height=previous,align='center')
+# plt.bar(x=x_axis, height=current,align='edge',width=.4)
 
 
-# for x in df.columns:
-#     print(x)
-# df.plot(x = df.colum,y=2, kind = 'bar')
+# plt.title('Comparison of Previous and Current Tax Rates on Property')
+# plt.ylabel('Value')
+# plt.xlabel('Building ID')
 
-# df.plot(x = 'OBJECTID',y='APRLAND',kind='bar')
-
-
-# print([df['APRLAND'][x]-df['PRILAND'][x] for x in df.index])
-# df.assign(tmp=df["APRLAND"]-df["PRILAND"])
-df["tmp"] = [df['APRLAND'][x]-df['PRILAND'][x] for x in df.index]
-df = df.sort_values(by='tmp',ascending=False)
-# df.drop(columns='tmp')
-
-start_ind = 0
-end_ind = 100
-
-# print(df.iloc[[x for x in range(start_ind,end_ind)],[0,2,3,6]])
-print(df.iloc[[x for x in range(start_ind,end_ind)]])
-
-# plt.bar(df["OBJECTID"][start_ind:end_ind],df["APRLAND"][start_ind:end_ind])
-# plt.bar(df["OBJECTID"][start_ind:end_ind],df["PRILAND"][start_ind:end_ind])
 # plt.legend()
 # plt.show()
+
+
+'''
+Show trend in difference between current and previous
+'''
+shown_elemenets = 10
+x_axis = np.arange(0,shown_elemenets,1)
+differences = current-previous
+print(f'Average change in rate {sum(differences)/len(x_axis):.1f}$')
+
+
+plt.bar(x_axis,differences)
+plt.show()
